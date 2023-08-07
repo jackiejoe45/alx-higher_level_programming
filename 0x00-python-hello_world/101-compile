@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Check if the PYFILE environment variable is set
+if [ -z "$PYFILE" ]; then
+    echo "Error: PYFILE environment variable is not set."
+    exit 1
+fi
+
+# Extract the filename from the PYFILE variable
+filename=$(basename "$PYFILE")
+
+# Add the '.pyc' extension to the filename
+output_file="${filename}c"
+
+# Create a temporary directory for compilation
+temp_dir=$(mktemp -d)
+
+# Compile the Python script and capture the error output
+error_output=$(python3 -m py_compile "$PYFILE" "$temp_dir" 2>&1)
+
+# Check if the compilation was successful
+if [ -z "$error_output" ]; then
+    echo "Compiling $PYFILE ..."
+    mv "$temp_dir/$output_file" .
+    rm -rf "$temp_dir"
+else
+    echo "Error: Compilation failed for $PYFILE."
+    echo "Error message:"
+    echo "$error_output"
+    rm -rf "$temp_dir"
+    exit 1
+fi
+
