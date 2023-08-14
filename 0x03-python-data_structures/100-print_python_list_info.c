@@ -1,72 +1,20 @@
-#include "lists.h"
 #include <Python.h>
+#include <object.h>
+#include <listobject.h>
+
+/**
+ * print_python_list_info - prints some basic info about pytohn list
+ * @p: python object
+ **/
 
 void print_python_list_info(PyObject *p)
 {
-	Py_ssize_t size = PyList_Size(p);
-	Py_ssize_t allocated = ((PyListObject *)p)->allocated;
+	long int size = PyList_Size(p);
+	int i;
+	PyListObject *obj = (PyListObject *)p;
 
-	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", allocated);
-
-	for (Py_ssize_t i = 0; i < size; ++i)
-	{
-		PyObject *element = PyList_GetItem(p, i);
-		const char *elementType = Py_TYPE(element)->tp_name;
-
-		printf("Element %ld: %s\n", i, elementType);
-	}
-}
-
-int main(void)
-{
-	Py_Initialize();
-
-	PyObject *pName = PyUnicode_DecodeFSDefault("libPyList");
-
-	if (pName != NULL)
-	{
-		PyObject *pModule = PyImport_Import(pName);
-
-		Py_DECREF(pName);
-
-		if (pModule != NULL)
-		{
-			PyObject *pFunc = PyObject_GetAttrString(pModule, "print_python_list_info");
-
-			if (pFunc && PyCallable_Check(pFunc))
-			{
-				PyObject *pList = PyList_New(0);
-				PyObject *pInt = PyLong_FromLong(42);
-				PyObject *pStr = PyUnicode_DecodeFSDefault("Hello");
-
-				PyList_Append(pList, pInt);
-				PyList_Append(pList, pStr);
-
-				PyObject_CallFunctionObjArgs(pFunc, pList, NULL);
-
-				Py_XDECREF(pList);
-				Py_XDECREF(pInt);
-				Py_XDECREF(pStr);
-
-				Py_DECREF(pFunc);
-			} else
-			{
-				if (PyErr_Occurred())
-					PyErr_Print();
-			}
-
-			Py_DECREF(pModule);
-		} else
-		{
-			PyErr_Print();
-		}
-	} else
-	{
-		PyErr_Print();
-	}
-
-	Py_Finalize();
-
-	return (0);
+	printf("[*] Size of the Python List = %li\n", size);
+	printf("[*] Allocated = %li\n", obj->allocated);
+	for (i = 0; i < size; i++)
+		printf("Element %i: %s\n", i, Py_TYPE(obj->ob_item[i])->tp_name);
 }
