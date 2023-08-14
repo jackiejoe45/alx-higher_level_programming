@@ -1,63 +1,43 @@
 #include "lists.h"
-
-/**
+/*
  * is_palindrome - checks if a singly linked list is a palindrome
  * @head: pointer to the head of the list
  * Return: 0 if it is not a palindrome, 1 if it is a palindrome
  */
 int is_palindrome(listint_t **head)
 {
-	if (!head || !(*head))
+	listint_t *current = *head;
+	int len = 0, i = 0, j = 0;
+	int *array;
+
+	if (!head)
+		return (0);
+	if (!*head)
 		return (1);
-
-	listint_t *slow = *head;
-	listint_t *fast = *head;
-	listint_t *prev_slow = NULL;
-	listint_t *mid = NULL;
-	int result = 1;
-
-	while (fast != NULL && fast->next != NULL)
+	while (current)
 	{
-		fast = fast->next->next;
-
-		listint_t *next = slow->next;
-		slow->next = prev_slow;
-		prev_slow = slow;
-		slow = next;
+		len++;
+		current = current->next;
 	}
-
-	if (fast != NULL)
+	array = malloc(sizeof(int) * len);
+	if (!array)
+		return (0);
+	current = *head;
+	while (current)
 	{
-		mid = slow;
-		slow = slow->next;
+		array[i] = current->n;
+		current = current->next;
+		i++;
 	}
-
-	while (prev_slow != NULL && slow != NULL)
+	while (j < len / 2)
 	{
-		if (prev_slow->n != slow->n)
+		if (array[j] != array[len - j - 1])
 		{
-			result = 0;
-			break;
+			free(array);
+			return (0);
 		}
-		prev_slow = prev_slow->next;
-		slow = slow->next;
+		j++;
 	}
-
-	fast = prev_slow;
-	prev_slow = NULL;
-	while (fast != NULL)
-	{
-		listint_t *next = fast->next;
-		fast->next = prev_slow;
-		prev_slow = fast;
-		fast = next;
-	}
-
-	if (mid != NULL)
-		mid->next = prev_slow;
-	else
-		*head = prev_slow;
-
-	return result;
+	free(array);
+	return (1);
 }
-
