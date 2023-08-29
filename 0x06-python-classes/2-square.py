@@ -1,42 +1,17 @@
-import math
+#!/usr/bin/python3
 """A module that defines a square """
 
 
-class MagicClass:
+class Square:
     """
-    This class provides methods to perform calculations using a radius value.
+    This class defines a square by specifying the size.
     """
-    def __init__(self, radius=0):
+    def __init__(self, size=0):
         """
-        Initializes a MagicClass instance with an optional radius.
+        Initializes a Square instance with an optional size.
         """
-        self.__radius = 0
-        self.radius = radius
-
-    @property
-    def radius(self):
-        """
-        Retrieves the value of the radius attribute.
-        """
-        return self.__radius
-
-    @radius.setter
-    def radius(self, value):
-        """
-        Sets the value of the radius attribute with type and value checks.
-        """
-        if not isinstance(value, (int, float)):
-            raise TypeError('radius must be a number')
-        self.__radius = value
-
-    def area(self):
-        """
-        Calculates and returns the area using the radius attribute.
-        """
-        return self.__radius ** 2 * math.pi
-
-    def circumference(self):
-        """
-        Calculates and returns the circumference using the radius attribute.
-        """
-        return 2 * math.pi * self.__radius
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        elif size < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = size
