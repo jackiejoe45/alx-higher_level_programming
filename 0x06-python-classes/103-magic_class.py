@@ -1,6 +1,7 @@
 import math
 """A module that defines a square """
 
+
 class MagicClass:
     """
     This class provides methods to perform calculations using a radius value.
