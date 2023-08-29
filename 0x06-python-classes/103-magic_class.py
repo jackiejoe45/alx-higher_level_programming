@@ -1,5 +1,4 @@
 import math
-"""A module that defines a square """
 
 
 class MagicClass:
@@ -12,22 +11,6 @@ class MagicClass:
         """
         self.__radius = 0
         self.radius = radius
-
-    @property
-    def radius(self):
-        """
-        Retrieves the value of the radius attribute.
-        """
-        return self.__radius
-
-    @radius.setter
-    def radius(self, value):
-        """
-        Sets the value of the radius attribute with type and value checks.
-        """
-        if not isinstance(value, (int, float)):
-            raise TypeError('radius must be a number')
-        self.__radius = value
 
     def area(self):
         """
