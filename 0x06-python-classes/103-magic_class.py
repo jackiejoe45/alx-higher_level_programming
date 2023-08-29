@@ -2,6 +2,7 @@
 import math
 """ This is a Custom Magic Class"""
 
+
 class MagicClass:
     """
     This class provides methods to perform calculations using a radius value.
