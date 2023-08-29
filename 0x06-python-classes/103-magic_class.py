@@ -1,5 +1,5 @@
 import math
-
+"""A module that defines a square """
 
 class MagicClass:
     """
