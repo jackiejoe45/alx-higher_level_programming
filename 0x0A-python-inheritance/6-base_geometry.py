@@ -3,6 +3,7 @@
 This module contains the BaseGeometry class with the area method.
 """
 
+
 class BaseGeometry:
     """
     A class representing BaseGeometry.

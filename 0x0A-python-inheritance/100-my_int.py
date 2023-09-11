@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 """
-This module contains the MyInt class that inherits from int with inverted == and != operators.
+This module contains the MyInt class that inherits from int
+with inverted == and != operators.
 """
+
 
 class MyInt(int):
     """
-    A class representing MyInt, which is a rebel with inverted == and != operators.
+    A class representing MyInt, which is a rebel with inverted
+    == and != operators.
     """
 
     def __eq__(self, other):

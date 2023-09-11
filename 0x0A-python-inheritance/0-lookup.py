@@ -3,6 +3,7 @@
 This module contains the lookup function.
 """
 
+
 def lookup(obj):
     """
     Returns the list of available attributes and methods of an object.
@@ -11,6 +12,6 @@ def lookup(obj):
         obj: The object to look up.
 
     Returns:
-        A list of strings representing the attributes and methods of the object.
+        A list of strings representing the attributes and methods ofan object.
     """
     return dir(obj)
