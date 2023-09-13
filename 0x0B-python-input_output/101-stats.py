@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 """
-Statistical Analysis
+ Statistical Analysis in python
 """
 
 
