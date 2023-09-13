@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 import sys
+"""
+Statistical Analysis
+"""
 
 
 def print_stats(total_size, status_codes):

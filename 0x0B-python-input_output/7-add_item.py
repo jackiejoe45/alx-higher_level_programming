@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+runs the code
+"""
+
+
 import sys
 from os.path import exists
 from 5-save_to_json_file import save_to_json_file
