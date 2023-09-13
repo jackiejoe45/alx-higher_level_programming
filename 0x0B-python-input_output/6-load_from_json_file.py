@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines a function load_from_json_file that creates an object from a JSON file.
+This module defines a function load_from_json_file
+that creates an object from a JSON file.
 """
 
 import json

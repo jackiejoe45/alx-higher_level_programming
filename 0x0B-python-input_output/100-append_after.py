@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""
+A function which appends after a specific string
+"""
+
 
 def append_after(filename="", search_string="", new_string=""):
     """
-    Inserts a line of text to a file after each line containing a specific string.
+    Inserts a line of text to a file after each
+    line containing a specific string.
 
     Args:
         filename (str): The name of the file to modify.
@@ -20,6 +25,7 @@ def append_after(filename="", search_string="", new_string=""):
             file.write(line)
             if search_string in line:
                 file.write(new_string)
+
 
 if __name__ == "__main__":
     append_after("append_after_100.txt", "Python", "\"C is fun!\"\n")

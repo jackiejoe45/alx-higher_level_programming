@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
-This module defines a class Student that represents a student with first_name, last_name, and age attributes.
+This module defines a class Student that represents
+a student with first_name, last_name, and age attributes.
 """
+
 
 class Student:
     """
@@ -10,7 +12,8 @@ class Student:
 
     def __init__(self, first_name, last_name, age):
         """
-        Initializes a Student instance with first_name, last_name, and age attributes.
+        Initializes a Student instance with
+        first_name, last_name, and age attributes.
 
         Args:
             first_name (str): The first name of the student.
