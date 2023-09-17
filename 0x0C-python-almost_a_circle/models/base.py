@@ -66,8 +66,13 @@ class Base:
             for dict in list_dicts:
                 list_inst.append(cls.create(**dict))
             return list_inst
-        except:
+        except FileNotFoundError:
             return []
+        except json.JSONDecodeError:
+            return []
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+            raise
 
     @staticmethod
     def draw(list_rectangles, list_squares):
