@@ -1,14 +1,17 @@
 #!/usr/bin/node
+const x = process.argv[2];
 
-const { argv } = require('node:process');
-
-if (typeof argv.index(0) !== 'Number') {
+if (!parseInt(x)) {
   console.log('Missing size');
 } else {
-  for (let i = 0; i < argv.index(0); i++) {
-    for (let j = 0; j < argv.index(0); j++) {
-      console.log('x');
+  for (let i = 0; i < x; i++) {
+    let y = 0;
+    let myVar = '';
+
+    while (y < x) {
+      myVar = myVar + 'X';
+      y++;
     }
-    console.log('\n');
+    console.log(myVar);
   }
 }

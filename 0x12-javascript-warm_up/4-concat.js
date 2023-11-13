@@ -1,11 +1,5 @@
 #!/usr/bin/node
+const argv0 = process.argv[2];
+const argv1 = process.argv[3];
 
-const { argv } = require('node:process');
-
-if (argv.index(0) === undefined) {
-  console.log('undefined is undefined');
-} else if (argv.index(1) === undefined) {
-  console.log(argv.index(0) + ' is undefined');
-} else {
-  console.log(argv.index(0) + ' is ' + argv.index(1));
-}
+console.log(`${argv0} is ${argv1}`);
