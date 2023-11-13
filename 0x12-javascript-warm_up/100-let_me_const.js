@@ -1,4 +1,4 @@
 #!/usr/bin/node
-let myVar;
+const myVar;
 myVar = 333;
 console.log(myVar);

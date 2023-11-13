@@ -3,7 +3,7 @@
 function factorial (n) {
   if (n === 0) {
     return 1;
-  } else if ( isNaN(n)) {
+  } else if (isNaN(n)) {
     return 1;
   } else {
     return n * factorial(n - 1);

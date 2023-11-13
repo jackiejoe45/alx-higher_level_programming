@@ -17,5 +17,5 @@ if (argv.index(0) === undefined) {
       secondBiggest = argv[i];
     }
   }
-  console.log(second_biggest);
+  console.log(secondBiggest);
 }
