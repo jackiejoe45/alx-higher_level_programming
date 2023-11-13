@@ -2,7 +2,7 @@
 
 const { argv } = require('node:process');
 
-if (typeof argv.index(0) !== Number) {
+if (typeof argv.index(0) !== 'Number') {
   console.log('Missing size');
 } else {
   for (let i = 0; i < argv.index(0); i++) {
