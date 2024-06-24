@@ -1,24 +1,24 @@
 #!/usr/bin/python3
 """
-This script lists all cities of a given state from the
-database `hbtn_0e_0_usa`.
+This script  takes in the name of a state
+as an argument and lists all cities of that
+state, using the database `hbtn_0e_4_usa`.
 """
-import MySQLdb
+
+import MySQLdb as db
 from sys import argv
 
 if __name__ == "__main__":
     """
-    Access to the database and get the states
+    Access to the database and get the cities
     from the database.
     """
 
-    # Connect to MySQL database
-    db = MySQLdb.connect(
-        host="localhost", port=3306, user=argv[1], passwd=argv[2], db=argv[3])
-    cursor = db.cursor()
+    db_connect = db.connect(host="localhost", port=3306,
+                            user=argv[1], passwd=argv[2], db=argv[3])
 
-    # Execute the query to fetch cities sorted by cities.id
-    cursor.execute("""
+    with db_connect.cursor() as db_cursor:
+        db_cursor.execute("""
             SELECT
                 cities.id, cities.name
             FROM
@@ -34,11 +34,7 @@ if __name__ == "__main__":
         """, {
             'state_name': argv[4]
         })
-    # Fetch all rows and print them
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+        rows_selected = db_cursor.fetchall()
 
-    # Close cursor and connection
-    cursor.close()
-    db.close()
+    if rows_selected is not None:
+        print(", ".join([row[1] for row in rows_selected]))
